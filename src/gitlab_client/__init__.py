@@ -5,14 +5,14 @@ from gitlab_client.exceptions import APIError, AuthenticationError, Configuratio
 from gitlab_client.models import DiffPosition, FileFromBase64, FileFromPath, FileSource
 
 __all__ = [
-    "GitLabClient",
-    "GitLabError",
     "APIError",
     "AuthenticationError",
     "ConfigurationError",
-    "NotFoundError",
     "DiffPosition",
     "FileFromBase64",
     "FileFromPath",
     "FileSource",
+    "GitLabClient",
+    "GitLabError",
+    "NotFoundError",
 ]

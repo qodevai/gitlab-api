@@ -40,7 +40,9 @@ class VariablesMixin(BaseClientMixin):
             "description": var.get("description"),
         }
 
-    def list_project_variables(self, project_id: str, per_page: int = 100, max_pages: int = 100) -> list[dict[str, Any]]:
+    def list_project_variables(
+        self, project_id: str, per_page: int = 100, max_pages: int = 100
+    ) -> list[dict[str, Any]]:
         """List all CI/CD variables (values stripped for security)."""
         encoded_id = self._encode_project_id(project_id)
         variables = self.get_paginated(f"/projects/{encoded_id}/variables", per_page=per_page, max_pages=max_pages)
@@ -127,9 +129,15 @@ class VariablesMixin(BaseClientMixin):
         """Upsert: update if exists, create if not. Returns (variable, action)."""
         existing = self.get_project_variable(project_id, key)
         kwargs = dict(
-            project_id=project_id, key=key, value=value, variable_type=variable_type,
-            protected=protected, masked=masked, raw=raw,
-            environment_scope=environment_scope, description=description,
+            project_id=project_id,
+            key=key,
+            value=value,
+            variable_type=variable_type,
+            protected=protected,
+            masked=masked,
+            raw=raw,
+            environment_scope=environment_scope,
+            description=description,
         )
         if existing:
             return self.update_project_variable(**kwargs), "updated"
