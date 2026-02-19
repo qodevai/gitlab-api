@@ -249,9 +249,7 @@ class TestMergeRequestMethods:
         assert result["title"] == "Add new feature"
         assert result["iid"] == 1
 
-    def test_close_mr(
-        self, mock_env_vars: dict, mock_httpx_client: MagicMock, sample_merge_request: dict
-    ) -> None:
+    def test_close_mr(self, mock_env_vars: dict, mock_httpx_client: MagicMock, sample_merge_request: dict) -> None:
         closed_mr = {**sample_merge_request, "state": "closed"}
         mock_response = MagicMock()
         mock_response.json.return_value = closed_mr
