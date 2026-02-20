@@ -1,6 +1,6 @@
 [project]
 name = "qodev-gitlab-api"
-version = "0.2.1"
+version = "0.2.2"
 description = "Python client for the GitLab API"
 readme = "README.md"
 authors = [

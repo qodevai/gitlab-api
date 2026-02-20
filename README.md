@@ -1,6 +1,17 @@
+[![CI](https://github.com/qodevai/gitlab-api/actions/workflows/ci.yml/badge.svg)](https://github.com/qodevai/gitlab-api/actions/workflows/ci.yml)
+[![PyPI](https://img.shields.io/pypi/v/qodev-gitlab-api)](https://pypi.org/project/qodev-gitlab-api/)
+
 # qodev-gitlab-api
 
 A lightweight, typed Python client for the GitLab REST API. Built on [httpx](https://www.python-httpx.org/) with automatic pagination, structured error handling, and `.env` support, it provides a clean interface for common GitLab operations without the weight of a full-featured SDK.
+
+## Why this library?
+
+- **Lightweight** -- just `httpx`, no heavy ORM-like abstractions
+- **Typed** -- ships with `py.typed` for full mypy/pyright support
+- **Agent-friendly** -- simple method signatures, dict returns, auto-pagination
+- **Built for tools** -- designed for MCP servers and CLIs, not full application frameworks
+- **Focused** -- `python-gitlab` is comprehensive but heavy; this library covers the operations AI agents and developer tools actually need
 
 ## Installation
 
@@ -21,6 +32,19 @@ client = GitLabClient(token="glpat-xxxxxxxxxxxx", base_url="https://gitlab.examp
 
 # Skip connection validation for faster startup
 client = GitLabClient(validate=False)
+```
+
+```python
+# List open merge requests
+mrs = client.get_merge_requests("mygroup/myproject", state="opened")
+for mr in mrs:
+    print(f"!{mr['iid']} {mr['title']}")
+
+# Create a merge request
+client.create_merge_request("mygroup/myproject", "feature-branch", "main", "Add new feature")
+
+# Get pipeline status
+pipelines = client.get_pipelines("mygroup/myproject")
 ```
 
 ## Features
