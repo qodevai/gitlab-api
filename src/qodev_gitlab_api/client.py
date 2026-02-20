@@ -1,11 +1,11 @@
 """GitLab API client composed from mixins."""
 
-from gitlab_client._files import FilesMixin
-from gitlab_client._issues import IssuesMixin
-from gitlab_client._merge_requests import MergeRequestsMixin
-from gitlab_client._pipelines import PipelinesMixin
-from gitlab_client._releases import ReleasesMixin
-from gitlab_client._variables import VariablesMixin
+from qodev_gitlab_api._files import FilesMixin
+from qodev_gitlab_api._issues import IssuesMixin
+from qodev_gitlab_api._merge_requests import MergeRequestsMixin
+from qodev_gitlab_api._pipelines import PipelinesMixin
+from qodev_gitlab_api._releases import ReleasesMixin
+from qodev_gitlab_api._variables import VariablesMixin
 
 
 class GitLabClient(

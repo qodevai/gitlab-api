@@ -5,7 +5,7 @@ from unittest.mock import MagicMock, patch
 import httpx
 import pytest
 
-from gitlab_client import (
+from qodev_gitlab_api import (
     APIError,
     AuthenticationError,
     ConfigurationError,
@@ -322,7 +322,7 @@ class TestFileUpload:
             "markdown": "![test](/uploads/abc/test.png)",
         }
 
-        with patch("gitlab_client._files.httpx.post") as mock_post:
+        with patch("qodev_gitlab_api._files.httpx.post") as mock_post:
             mock_response = MagicMock()
             mock_response.json.return_value = upload_response
             mock_response.raise_for_status = MagicMock()
@@ -339,7 +339,7 @@ class TestFileUpload:
 
         upload_response = {"alt": "img", "url": "/uploads/def/img.png", "markdown": "![img](...)"}
 
-        with patch("gitlab_client._files.httpx.post") as mock_post:
+        with patch("qodev_gitlab_api._files.httpx.post") as mock_post:
             mock_response = MagicMock()
             mock_response.json.return_value = upload_response
             mock_response.raise_for_status = MagicMock()

@@ -1,8 +1,8 @@
 """GitLab API client library."""
 
-from gitlab_client.client import GitLabClient
-from gitlab_client.exceptions import APIError, AuthenticationError, ConfigurationError, GitLabError, NotFoundError
-from gitlab_client.models import DiffPosition, FileFromBase64, FileFromPath, FileSource
+from qodev_gitlab_api.client import GitLabClient
+from qodev_gitlab_api.exceptions import APIError, AuthenticationError, ConfigurationError, GitLabError, NotFoundError
+from qodev_gitlab_api.models import DiffPosition, FileFromBase64, FileFromPath, FileSource
 
 __all__ = [
     "APIError",

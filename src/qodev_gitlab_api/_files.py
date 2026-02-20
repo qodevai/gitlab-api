@@ -9,8 +9,8 @@ from urllib.parse import quote
 
 import httpx
 
-from gitlab_client._base import BaseClientMixin, _raise_for_status
-from gitlab_client.models import FileFromPath, FileSource
+from qodev_gitlab_api._base import BaseClientMixin, _raise_for_status
+from qodev_gitlab_api.models import FileFromPath, FileSource
 
 logger = logging.getLogger(__name__)
 

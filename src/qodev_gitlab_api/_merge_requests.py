@@ -6,8 +6,8 @@ from typing import Any
 
 import httpx
 
-from gitlab_client._base import BaseClientMixin, _raise_for_status
-from gitlab_client.models import DiffPosition
+from qodev_gitlab_api._base import BaseClientMixin, _raise_for_status
+from qodev_gitlab_api.models import DiffPosition
 
 logger = logging.getLogger(__name__)
 
@@ -200,7 +200,7 @@ class MergeRequestsMixin(BaseClientMixin):
                 msg = error_json.get("message", str(e))
             except (json.JSONDecodeError, AttributeError):
                 msg = str(e)
-            from gitlab_client.exceptions import APIError as _APIError
+            from qodev_gitlab_api.exceptions import APIError as _APIError
 
             raise _APIError(msg, status_code=e.response.status_code, response_body=e.response.text[:500]) from e
 

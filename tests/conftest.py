@@ -21,7 +21,7 @@ def mock_env_vars() -> Generator[dict[str, str], None, None]:
 @pytest.fixture
 def mock_httpx_client() -> Generator[MagicMock, None, None]:
     """Mock httpx.Client at the module level where it's instantiated."""
-    with patch("gitlab_client._base.httpx.Client") as mock_client_class:
+    with patch("qodev_gitlab_api._base.httpx.Client") as mock_client_class:
         mock_client = MagicMock()
         mock_client_class.return_value = mock_client
         yield mock_client

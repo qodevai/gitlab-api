@@ -8,7 +8,7 @@ from urllib.parse import quote
 import httpx
 from dotenv import load_dotenv
 
-from gitlab_client.exceptions import APIError, AuthenticationError, ConfigurationError, NotFoundError
+from qodev_gitlab_api.exceptions import APIError, AuthenticationError, ConfigurationError, NotFoundError
 
 load_dotenv()
 
