@@ -128,17 +128,7 @@ class VariablesMixin(BaseClientMixin):
     ) -> tuple[dict[str, Any], str]:
         """Upsert: update if exists, create if not. Returns (variable, action)."""
         existing = self.get_project_variable(project_id, key)
-        kwargs = dict(
-            project_id=project_id,
-            key=key,
-            value=value,
-            variable_type=variable_type,
-            protected=protected,
-            masked=masked,
-            raw=raw,
-            environment_scope=environment_scope,
-            description=description,
-        )
+        args = (project_id, key, value, variable_type, protected, masked, raw, environment_scope, description)
         if existing:
-            return self.update_project_variable(**kwargs), "updated"
-        return self.create_project_variable(**kwargs), "created"
+            return self.update_project_variable(*args), "updated"
+        return self.create_project_variable(*args), "created"

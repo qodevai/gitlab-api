@@ -92,7 +92,7 @@ class MergeRequestsMixin(BaseClientMixin):
             }
             for key in ("new_line", "old_line", "base_sha", "head_sha", "start_sha"):
                 if key in position:
-                    gitlab_position[key] = position[key]  # type: ignore[literal-required]
+                    gitlab_position[key] = position[key]
             data["position"] = gitlab_position
 
         try:
