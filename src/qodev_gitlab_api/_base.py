@@ -34,23 +34,28 @@ class BaseClientMixin:
     api_url: str
     client: httpx.Client
 
-    def __init__(self, token: str | None = None, base_url: str | None = None, validate: bool = True):
+    def __init__(
+        self, token: str | None = None, base_url: str | None = None, validate: bool = True, lazy: bool = False
+    ):
         self.token = token or os.getenv("GITLAB_TOKEN")
         self.base_url = (
             base_url or os.getenv("GITLAB_BASE_URL") or os.getenv("GITLAB_URL") or "https://gitlab.com"
         ).rstrip("/")
 
-        self._validate_configuration()
+        if not lazy:
+            self._validate_configuration()
 
         self.api_url = f"{self.base_url}/api/v4"
-        headers: dict[str, str] = {"PRIVATE-TOKEN": str(self.token), "Content-Type": "application/json"}
+        headers: dict[str, str] = {"Content-Type": "application/json"}
+        if self.token:
+            headers["PRIVATE-TOKEN"] = self.token
         self.client = httpx.Client(
             base_url=self.api_url,
             headers=headers,
             timeout=30.0,
         )
 
-        if validate:
+        if validate and not lazy:
             self._test_connectivity()
         else:
             logger.info(f"GitLab client initialized for {self.base_url} (validation skipped)")
