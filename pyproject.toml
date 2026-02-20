@@ -1,6 +1,6 @@
 [project]
 name = "qodev-gitlab-api"
-version = "0.2.0"
+version = "0.2.1"
 description = "Python client for the GitLab API"
 readme = "README.md"
 authors = [
@@ -25,6 +25,7 @@ dependencies = [
 ]
 
 [project.urls]
+Homepage = "https://github.com/qodevai/gitlab-api"
 Repository = "https://github.com/qodevai/gitlab-api"
 Issues = "https://github.com/qodevai/gitlab-api/issues"
 
